@@ -4,20 +4,22 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "dev": "webpack --mode development",
-    "build": "webpack --mode production",
-    "start": "webpack-dev-server --mode development --open"
+    "dev": "node src/utils/assets.js && webpack --mode development",
+    "build": "node src/utils/assets.js && webpack --mode production",
+    "start": "node src/utils/assets.js && webpack-dev-server --mode development --https"
   },
   "author": "stingydev <stingydeveloper@gmail.com>",
   "license": "MIT",
   "dependencies": {
     "@babel/runtime": "^7.20.6",
     "core-js": "^3.26.1",
+    "fs": "^0.0.1-security",
     "phaser": "^3.55.2"
   },
   "devDependencies": {
     "@babel/core": "^7.20.5",
     "@babel/preset-env": "^7.20.2",
+    "@types/facebook-instant-games": "^7.0.2",
     "babel-loader": "^9.1.0",
     "html-webpack-plugin": "^5.5.0",
     "ts-loader": "^9.4.2",
