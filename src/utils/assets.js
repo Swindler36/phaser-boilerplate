@@ -1,6 +1,7 @@
 const fs = require("fs");
 
-fs.rmSync("./dist/assets", { recursive: true, force: true });
+if (fs.existsSync("./dist/assets"))
+  fs.rmSync("./dist/assets", { recursive: true, force: true });
 
 fs.cp("./src/assets", "./dist/assets", { recursive: true }, (err) => {
   if (err) {
@@ -26,24 +27,42 @@ const readdir = (dir_path = "") => {
   });
 };
 
-readdir("assets/preload/");
+if (fs.existsSync("assets/preload/")) readdir("assets/preload/");
 
-fs.writeFileSync(
-  "./dist/assets.js",
-  "const preload_files = " + JSON.stringify(preload_files)
-);
+if (fs.existsSync("./dist/assets.js"))
+  fs.writeFileSync(
+    "./dist/assets.js",
+    "const preload_files = " + JSON.stringify(preload_files)
+  );
+else
+  fs.writeFileSync(
+    "./dist/assets.js",
+    "const preload_files = " + JSON.stringify(preload_files),
+    { flag: "wx" }
+  );
 
-fs.writeFileSync(
-  "./public/assets.js",
-  "const preload_files = " + JSON.stringify(preload_files)
-);
+if (fs.existsSync("./public/assets.js"))
+  fs.writeFileSync(
+    "./public/assets.js",
+    "const preload_files = " + JSON.stringify(preload_files)
+  );
+else
+  fs.writeFileSync(
+    "./public/assets.js",
+    "const preload_files = " + JSON.stringify(preload_files),
+    { flag: "wx" }
+  );
 
-fs.copyFile(
-  "./src/config/fbapp-config.json",
-  "./dist/fbapp-config.json",
-  (err) => {
-    if (err) {
-      console.error(err);
+if (fs.existsSync("./src/config/fbapp-config.json"))
+  fs.copyFile(
+    "./src/config/fbapp-config.json",
+    "./dist/fbapp-config.json",
+    (err) => {
+      if (err) {
+        console.error(err);
+      }
     }
-  }
-);
+  );
+else {
+  console.error("Config File is missing!!");
+}

@@ -4,8 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "dev": "node src/utils/assets.js && webpack --mode development",
-    "build": "node src/utils/assets.js && webpack --mode production",
+    "dev": "webpack --mode development && node src/utils/assets.js",
+    "build": "webpack --mode production && node src/utils/assets.js",
     "start": "node src/utils/assets.js && webpack-dev-server --mode development --https"
   },
   "author": "stingydev <stingydeveloper@gmail.com>",
