@@ -1,7 +1,7 @@
 ## Setup
 
 ```bash
-git clone https://github.com/Swindler36/phaser-boilerplate.git
+git clone https://github.com/Swindler36/phaser-fbinstant-boilerplate.git
 ```
 
 Install dependiences
